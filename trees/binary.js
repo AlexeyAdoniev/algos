@@ -67,7 +67,11 @@ Tree.prototype = {
         const right_sum = this.right ? this.right.getSum() : 0;
         return this.val + left_sum + right_sum;
     },
-    getDiameter() {},
+    getDiameter() {
+        let diameter = 0;
+        function inner() {}
+        return diameter;
+    },
     //depth of left and right differ not more than 1
     isBalanced() {
         function inner(tree) {
@@ -107,3 +111,39 @@ tree.insert(15);
 
 console.log(tree.isBalanced());
 //console.log(utils.inspect(tree, false, 100, true));
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+var isBalanced = function (root) {
+    function isBalanced(root) {
+        function inner(tree) {
+            const left_depth = tree.left ? inner(tree.left) : 0;
+            const right_depth = tree.right ? inner(tree.right) : 0;
+
+            if (Math.abs(left_depth - right_depth) > 1) {
+                throw "unbalanced";
+            }
+
+            return 1 + Math.max(left_depth, right_depth);
+        }
+
+        try {
+            inner(root);
+            return true;
+        } catch (e) {
+            console.log("unbalanced");
+            return false;
+        }
+    }
+
+    return isBalanced(root);
+};
