@@ -1,0 +1,9 @@
+{
+  "name": "algos",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "repository": "https://github.com/AlexeyAdoniev/algos.git",
+  "author": "AlexeyAdoniev <Alexeya@xp.network>",
+  "license": "MIT"
+}
